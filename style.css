@@ -1,0 +1,220 @@
+/* Обнулення стандартних відступів та налаштування розмірів */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Налаштування шрифту для всього сайту */
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+}
+
+/* Робимо головний контейнер флекс-боксом */
+.app-container {
+    display: flex;
+    min-height: 100vh; /* Розтягуємо на всю висоту екрана */
+}
+
+/* Стилі для лівого меню */
+.sidebar {
+    width: 260px; /*Фіксована ширина меню*/
+    background-color: #1e2522;
+    color: #fff;
+    padding: 20px;
+}
+
+/*Стилі для правої робочої області*/
+.main-content {
+    flex: 1; /* Займати весь залишок простору справа */
+    padding: 30px;
+}
+
+/* Прибираємо стандартні крапки біля списку */
+.sidebar ul {
+    list-style: none;
+}
+
+/* Робимо відступи між пунктами меню */
+.sidebar li {
+    margin-bottom: 12px;
+}
+
+/* Стилізуємо самі посилання в меню */
+.menu-item {
+    display: block;
+    color: #a3b1aa;
+    text-decoration: none; /* Прибираємо підкреслення посилання */
+    padding: 10px 15px;
+    border-radius: 6px; /* Закруглені кути */
+    transition: background 0.3s; /* Плавний ефект при наведенні */
+}
+
+/* Ефект при наведенні мишкою на пункт меню */
+.menu-item:hover {
+    background-color: #2d3833;
+    color: #fff;
+}
+
+/* Стиль для активного (обраного) пункту меню */
+.menu-item.active {
+    background-color: #0f5132; 
+    color: #fff;
+    font-weight: 600; /* Жирніший текст */
+}
+
+/* Магія приховування: будь-який елемент із цим класом повністю зникає з екрана */
+.hidden {
+    display: none !important;
+}
+
+/* 1. НАЛАШТУВАННЯ СІТКИ ДЛЯ КАРТОК */
+.fop-grid {
+    display: grid;
+    /* Автоматичні стовпчики: браузер сам вирішить, скільки карток шириною мінімум 300px поміститься в один ряд */
+    grid-template-columns: repeat(auto-fill, min-max (300px, 1fr));
+    gap: 20px;/* Красиві однакові відступи між картками з усіх боків */
+    margin-top: 20px;
+}
+
+/* 2. СТИЛЬ САМОЇ КАРТКИ ФОП */
+.fop-card {
+    background-color: #fff;
+    border-left: 5px solid #0f5132;
+    border-radius: 8px; /* Легке закруглення кутів */
+    padding: 20px; /* М'яка тінь, яка робить картку "об'ємною", як у сучасних додатках */
+    box-shadow: 0 4px 6px rgba(0 0 0 0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+    max-width: 350px; /* Золоте обмеження: картка більше ніколи не розтягнеться на пів екрана */
+}
+
+/* Ефект легкого підняття картки при наведенні мишкою */
+.fop-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(0 0 0 0.1);
+}
+
+/* Назва ФОПа всередині картки */
+.fop-card h3 {
+    margin-bottom: 0;
+    color: #1e2522;
+    font-size: 1.2rem;
+}
+
+/* 3. ОФОРМЛЕННЯ ПОКАЗНИКІВ У СТОВПЧИК */
+/* Рядок всередині картки, де лежать "Назва: Значення" */
+.fop-info-row {
+    display: flex;
+    justify-content: space-between;/* Розсуває назву вліво, а значення вправо */
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+/* Стиль для назви показника (ліва частина) */
+.info-label {
+content: #6c757d;;
+}
+
+/* Стиль для значення (права частина) */
+.info-value {
+    font-weight: 500;
+    color: #212529;
+}
+
+/* 4. КОЛЬОРОВІ СТАТУСИ ДЛЯ "ТАК" ТА "НІ" */
+.status-yes {
+    color: #0f5132;
+    font-weight: 600;
+}
+.status-no {
+    color: #842029;
+    font-weight: 600;
+}
+
+/* Допоміжний сірий текст */
+.text-muted {
+    color: #adb5bd;
+}
+
+/* Верхня панель з кнопками */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    max-width: 350px; /* Золоте обмеження: не розтягнеться на пів екрана */
+    justify-content: space-between;/* Розсуває назву вліво, а значення вправо */
+}
+
+/* Стиль для кнопки згортання */
+.btn-secondary {
+    background-color: #e2e8f0;
+    color: #334155;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: #cbd5e1;
+}
+
+/* Кнопка додавання */
+.btn-add {
+    background-color: #0f5132;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.btn-add:hover {
+    background-color: #157347;
+}
+
+/* Налаштування клікабельної шапки картки */
+.fop-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none; /* Щоб текст не виділявся синім при подвійному кліку */
+    cursor: pointer;
+}
+
+/* Стрілочка на картці */
+.arrow-icon {
+    color: #6c757d;
+    transition: transform 0.2s;
+}
+
+/* Відступ для вмісту, щоб він не липнув до шапки */
+.fop-card-body {
+    margin-top: 15px;
+    border-top: 1px solid #e9ecef;
+    padding-top: 15px;
+    cursor: default;
+}
+
+/* --- МАГІЯ ЗГОРТАННЯ --- */
+/* Якщо картка має додатковий клас "collapsed" — ховаємо її вміст */
+.fop-card.collapsed .fop-card-body {
+    display: none;
+}
+
+/* Якщо картка згорнута — розгортаємо стрілочку вбік (на -90 градусів) */
+.fop-card.collapsed .arrow-icon {
+    transform: rotate(-90deg);
+}

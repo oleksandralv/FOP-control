@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <meta name=""viewport" content="width=device-width, initial-scale=1.0">
+        <title>Контроль ФОПів Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!--Головний контейнер усього сайту-->
+        <div class="app-container">
+
+            <!--Ліве бічне меню (Sidebar)-->
+            <aside class="sidebar">
+                <h2>Навігація</h2>
+                <ul>
+                    <li><a href="#" class="menu-item active">🏠 Головна панель</a></li>
+                    <li><a href="#" class="menu-item">📅 Календар дедлайнів</a></li>
+                    <li><a href="#" class="menu-item">🗃️ Перелік ФОПів</a></li>
+                    <li><a href="#" class="menu-item">📊 Актуальні ліміти</a></li>
+                </ul>
+            </aside>
+
+            <!--Основна робоча область справа-->
+            <main class="main-content">
+
+                <!-- СЕКЦІЯ 1: ГОЛОВНА ПАНЕЛЬ (Відкрита за замовчуванням) -->
+                <section id="dashboard-section">
+                    <h1>Станом на сьогодні</h1>
+                    < p>Тут згодом будуть критичні дедлайни та ФОПи, що наближаються до ліміту.</p>
+                </section>
+
+                <!--Секція 3: Перелік ФОПів (Варіант №2 — Вертикальні картки сіткою)-->
+                <section id="reestr-section">
+                    <div class="section-headder">
+                        <h1>Перелік ФОП</h1>
+                        <div class="action-buttons">
+                            <!-- Наші кнопки керування -->
+                         <button class="btn-add">+ Додати ФОП 🪪</button>
+                         <button class="btn-secondary" id="btn-toggle-all">Розгорнути всіх</button>                         
+                        </div>
+                    </div>
+
+                    <!-- Контейнер для нашої майбутньої сітки карток -->
+                    <div class="fop-grid">
+
+                        <!-- КАРТКА ФОП 1 -->
+                        <div class="fop-card collapsed">
+                            <!-- Клікабельна шапка картки -->
+                            <div class="fop-card-header">
+                                <h3>ФОП 1</h3>
+                                <span class="arrow-icon">▼</span>
+                            </div>
+                            <!-- Вміст, який буде згортатися -->
+                            <div class="fop-card-body">
+                                <div class="fop-info-row">
+                                    <span class="info-label">Група</span>
+                                    <span class="info-value">Загальна система</span>
+                                </div>
+                                <div class="fop-info-row">
+                                    <span class="info-label">ПДВ</span>
+                                    <span class="info-value status-yes">Так</span>
+                                </div>
+                                <div class="fop-info-row">
+                                    <span class="info-label">Наймані</span>
+                                    <span class="info-value status-yes">Так</span>
+                                </div>
+                                <div class="fop-info-row">
+                                    <span class="info-label">ЄСВ за себе</span>
+                                    <span class="info-value status-no">Ні</span>
+                                </div>
+                                <div class="fop-info-row">
+                                    <span class="info-label">Ліміт</span>
+                                    <span class="info-value">Необмежено</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- КАРТКА ФОП 3 (Для прикладу з лімітом) -->
+                        <div class="fop-card collapsed">
+                            <div class="fop-card-header">
+                                <h3>ФОП 3</h3>
+                                <span class="arrow-icon">▼</span>
+                            </div>
+                            <div class="fop-card-body">
+                                <div class="fop-info-row">
+                                    <span class="info-label">Група:</span>
+                                    <span class="info-value">3 група</span>
+                                </div>
+                                <div class="fop-info-row">
+                                    <span class="info-label">ПДВ:</span>
+                                    <span class="info-value status-yes">Так</span>
+                                </div>
+                                <div class="fop-info-row">
+                                    <span class="info-label">Наймані:</span>
+                                    <span class="info-value status-yes">Так</span>
+                                </div>
+                                <div class="fop-info-row">
+                                    <span class="info-label">ЄСВ за себе:</span>
+                                    <span class="info-value status-no">Ні</span>
+                                </div>
+                                <div class="fop-info-row">
+                                    <span class="info-label">Ліміт:</span>
+                                    <span class="info-value">8 285 700 грн</span>
+                                </div>
+                            </div>
+                    </div><!-- Кінець сітки fop-grid -->
+                </section>
+            </main>
+        </div>
+        <!-- Вставляємо код підключення мозку сайту ОСЬ СЮДИ: -->
+        <script src="script.js"></script>
+    </body>
+</html>
