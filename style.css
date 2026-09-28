@@ -28,8 +28,11 @@ body{
 
 /* Стилізуємо заголовок "Навігація" у бічному меню */
 .sidebar h2 {
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.1); /* Тонка лінія */
+    content: ""; /* Кажемо браузеру: це чисто візуальний елемент */
+    display: block; /* Перетворюємо на повноцінний видимий блок */
+    height: 1px; /* Товщина нашої лінії */
+    width: 100%; /* Розтягуємо лінію на всю ширину меню */
+    background-color: rgba(255, 255, 255, 0.15); /* Робимо колір лінії трохи яскравішим */
     margin-bottom: 25px;
     margin-top: 10px;
 }
@@ -225,4 +228,108 @@ content: #6c757d;;
 /* Якщо картка згорнута — розгортаємо стрілочку вбік (на -90 градусів) */
 .fop-card.collapsed .arrow-icon {
     transform: rotate(-90deg);
+}
+
+/* 5. СТИЛІ ДЛЯ СЕКЦІЇ ГОЛОВНОЇ СТОРІНКИ (ВИШУКАНИЙ МІНІМАЛІЗМ) */
+.dashboard-widgets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-top: 25px;
+    align-items: start;
+}
+
+/* Біла акуратна картка віджета */
+.widget-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); /* Дуже м'яка, ледве помітна тінь */
+    border-top: 3px solid #3d4641; /* Приглушений графітовий акцент зверху */
+}
+
+.widget-card h2 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #242926;
+    margin-bottom: 20px;
+}
+
+/* Рядки дедлайнів */
+.alert-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    background-color: #f8f9fa; /* Чистий попелясто-сірий фон замість папужого червоного */
+    border-left: 3px solid #84484f; /* Делікатний винно-бордовий маркер небезпеки */
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+/* Приглушені стікери статусів */
+.alert-badge {
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.badge-danger {
+    background-color: #f5e6e7;
+    color: #72393f; /* Спокійний винний колір */
+}
+
+.badge-warning, .limit-text-danger {
+    background-color: #d4ddd9; /* Новий ніжно-шавлієвий колір #d4ddd9, а темний Фірмовий сіро-оливковий колір тексту меню справа #a3b1aa */
+    color: #1e2522;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Блок ліміту */
+.limit-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.limit-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+}
+
+/* Тонкий та вишуканий прогрес-бар */
+.progress-container {
+    background-color: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 12px; /* Робимо смужку витонченою та тонкою */
+}
+
+.progress-bar {
+    height: 100%;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0f5132; /* Наш фірмовий глибокий смарагдовий колір для заповнення ліміту */
+    border-radius: 4px;
+}
+
+/* Акуратний підвал віджета лімітів */
+.limit-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #8a948f;
+    border-top: 1px solid #f1f3f5;
+    padding-top: 14px;
+    margin-top: 4px;
 }

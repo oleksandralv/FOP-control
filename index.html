@@ -14,24 +14,119 @@
             <aside class="sidebar">
                 <h2></h2>
                 <ul>
-                    <li><a href="#" class="menu-item active">🏠 Головна панель</a></li>
-                    <li><a href="#" class="menu-item">📅 Календар дедлайнів</a></li>
-                    <li><a href="#" class="menu-item">🗃️ Перелік ФОПів</a></li>
-                    <li><a href="#" class="menu-item">📊 Актуальні ліміти</a></li>
+                    <li><a href="#" class="menu-item active">Головна панель</a></li>
+                    <li><a href="#" class="menu-item">Календар дедлайнів</a></li>
+                    <li><a href="#" class="menu-item">Перелік ФОПів</a></li>
+                    <li><a href="#" class="menu-item">Актуальні ліміти</a></li>
                 </ul>
             </aside>
 
             <!--Основна робоча область справа-->
             <main class="main-content">
 
-                <!-- СЕКЦІЯ 1: ГОЛОВНА ПАНЕЛЬ (Відкрита за замовчуванням) -->
+                <!-- СЕКЦІЯ 1: ГОЛОВНА ПАНЕЛЬ -->
                 <section id="dashboard-section">
-                    <h1>Станом на сьогодні</h1>
-                    < p>Тут згодом будуть критичні дедлайни та ФОПи, що наближаються до ліміту.</p>
+                    <div class="section-header">
+                        <h1>Стан на сьогодні</h1>
+                        <!-- 1. Стилізуємо дату під плашку (додали клас date-badge) -->
+                        <span class="current-date date-badge">Сьогодні: <strong id="today-date">26.09.2026</strong></span>
+                    </div>
+
+                    <!-- Контейнер для віджетів швидкого реагування -->
+                    <div class="dashboard-widgets">
+        
+                        <!-- ВІДЖЕТ 1: КРИТИЧНІ ДЕДЛАЙНИ -->
+                        <div class="widget-card">
+                            <!-- 3 & 4. Заголовкам додаємо клас widget-title-bg та міняємо емодзі на крапку -->
+                            <div class="widget-header widget-title-bg">
+                                <h2><span class="dot-icon">•</span> Критичні дедлайни (менше 3 днів)</h2>
+                            </div>
+                            <div class="widget-body">
+                                <!-- Рядок ФОП 3 -->
+                                <div class="alert-item">
+                                    <span class="alert-text"><strong>ФОП 3</strong> — Подання звітності з ПДВ</span>
+                                    <span class="alert-badge badge-danger">Залишилось 2 дні</span>
+                                </div>
+                                <!-- 4. Стандартизуємо рядок ФОП 5: прибираємо червону рамку, робимо як у лімітах -->
+                                <div class="alert-item standard-item">
+                                    <span class="alert-text"><strong>ФОП 5</strong> — Сплата Єдиного Податку</span>
+                                    <span class="alert-badge badge-warning">Завтра дедлайн</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ВІДЖЕТ 2: КОНТРОЛЬ ЛІМІТІВ -->
+                        <div class="widget-card">
+                            <div class="widget-header widget-title-bg">
+                                <h2><span class="dot-icon">•</span> Наближення до ліміту доходу</h2>
+                            </div>
+                            <div class="widget-body">
+                                <div class="limit-item">
+                                    <div class="limit-info">
+                                        <strong>ФОП 2</strong> (Загальна система)
+                                        <span class="limit-text-danger">Увага! ПДВ!</span>
+                                    </div>
+                                    <div class="progress-container">
+                                        <div class="progress-bar bar-danger" style="width: 92%;">92%</div>
+                                    </div>
+                                    <div class="limit-footer">
+                                        <span>Fact: 1 020 000 грн</span>
+                                        <span>Limit: не обмежено</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>  
+
+
+                <!-- СЕКЦІЯ 2: КАЛЕНДАР ДЕДЛАЙНІВ -->
+                <section id="calendar-section" class="hidden">
+                    <div class="section-headder">
+                    <h1>Календар дедлайнів</h1>
+                        <div class="action-buttons">
+                            <!-- Перемикач виглядів сторінки -->
+                            <button class="btn-secondary id-active" id="btn-view-list">Список</button>
+                            <button class="btn-secondary" id="btn-view-grid">Місячна сітка</button>
+                        </div>
+                    </div>
+
+                    <!-- Таблиця дедлайнів (Вигляд за замовчуванням) -->
+                    <div class="calendar-list-view">
+                        <table class="compliance-table">
+                            <thead>
+                                <tr>
+                                    <th>Підприємець</th>
+                                    <th>Подія/Податок</th>
+                                    <th>Крайній термін (План)</th>
+                                    <tr>Дата виконання (Факт)</tr>
+                                    <tr>Статус</tr>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Тестовий рядок 1: Горить дедлайн -->
+                                <tr class="row-danger">
+                                    <td><strong>ФОП 3</strong></td>
+                                    <td>Подання звітності з ПДВ (серпень)</td>
+                                    <td>20.10.2026</td>
+                                    <td><input type="data" class="input-fact-date" id="fact-date-fop3" name="fact-date-fop3"></td>
+                                    <td><span class="status-badge badge-danger">🔥 Горить</span></td>
+                                </tr>
+                                <!-- Тестовий рядок 2: Успішно виконано -->
+                                <tr class="row-success">
+                                    <td><strong>ФОП 1</strong></td>
+                                    <td>Сплата ЄСВ (III квартал)</td>
+                                    <td>19.10.2026</td>
+                                    <td><input type="date" class="input-fact-date" id="fact-date-fop1" name="fact-date-fop1" value="2026-10-15"></td>
+                                    <td><span class="status-badge badge-success">🟢 Сплачено</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </section>
 
                 <!--Секція 3: Перелік ФОПів (Варіант №2 — Вертикальні картки сіткою)-->
-                <section id="reestr-section">
+                <section id="reestr-section" class="hidden">
                     <div class="section-headder">
                         <h1>Перелік ФОП</h1>
                         <div class="action-buttons">
