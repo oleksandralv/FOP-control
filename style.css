@@ -230,41 +230,85 @@ content: #6c757d;;
     transform: rotate(-90deg);
 }
 
-/* 5. СТИЛІ ДЛЯ СЕКЦІЇ ГОЛОВНОЇ СТОРІНКИ (ВИШУКАНИЙ МІНІМАЛІЗМ) */
+/* 5. СТИЛІ ДЛЯ СЕКЦІЇ ГОЛОВНОЇ СТОРІНКИ (ОНОВЛЕНИЙ МІНІМАЛІЗМ) */
 .dashboard-widgets {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 30px;
+    gap: 25px; /* Контрольований відступ між ними */
     margin-top: 25px;
-    align-items: start;
+    align-items: stretch; /* МАГІЯ: змушує всі картки в одному ряду автоматично розтягуватися до висоти найдовшої сусідньої картки */
 }
 
-/* Біла акуратна картка віджета */
+/* Стильна плашка для поточної дати */
+.date-badge {
+    background-color: #e2e8f0; /* Легкий попелясто-сірий фон */
+    color: #334155;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Картка віджета */
 .widget-card {
     background-color: #fff;
     border-radius: 8px;
-    padding: 24px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); /* Дуже м'яка, ледве помітна тінь */
-    border-top: 3px solid #3d4641; /* Приглушений графітовий акцент зверху */
+    border-top: 3px solid #3d4641;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    overflow: hidden; /* Щоб сірий фон заголовків не вилізав за округлені кути картки */
+    display: flex; 
+    flex-direction: column; /* Елементи всередині йдуть зверху вниз */
+    min-height: 160px; /* 2. Фіксуємо мінімальну однакову висоту для обох віджетів */
+}
+
+/* Шапка віджета з легким сірим бекграундом */
+.widget-title-bg {
+    background-color: #f1f3f5; /* 4. Легкий сірий фон для заголовків */
+    padding: 14px 20px;
+    border-bottom: 1px solid #e9ecef;
 }
 
 .widget-card h2 {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #242926;
-    margin-bottom: 20px;
+    margin-bottom: 0; /* Прибираємо старий відступ */
+    display: flex;
+    align-items: center;
+}
+
+/* 3. Мінімалістична крапочка в колір загальної теми */
+.dot-icon {
+    color: #606c38; /* Оливково-смарагдовий фірмовий колір */
+    margin-right: 10px;
+    font-size: 1.4rem;
+    line-height: 0;
+}
+
+/* Внутрішній простір для вмісту віджетів */
+.widget-body {
+    padding: 20px;
+    flex: 1; /* Рівномірно розтягує вміст по висоті */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Центрує елементи всередині по вертикалі */
 }
 
 /* Рядки дедлайнів */
+/* Рядки дедлайнів — чисті, без колірного хаосу та без рамок (як у лімітах) */
 .alert-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 16px;
-    background-color: #f8f9fa; /* Чистий попелясто-сірий фон замість папужого червоного */
-    border-left: 3px solid #84484f; /* Делікатний винно-бордовий маркер небезпеки */
+    padding: 12px 16px;
+    background-color: #f8f9fa; /* Нейтральний світло-сірий фон */
     border-radius: 4px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+    border: none; /* 4. ПОВНІСТЮ ПРИБИРАЄМО ЧЕРВОНУ РАМКУ ЗЛІВА border-left: 3px solid # */
+}
+
+.alert-item:last-child {
+    margin-bottom: 0; /* Прибираємо відступ у останнього рядка */
 }
 
 /* Приглушені стікери статусів */
@@ -275,13 +319,19 @@ content: #6c757d;;
     font-weight: 500;
 }
 
+/* Стікер критичної небезпеки (Залишилось 2 дні) — робимо приглушено-винним */
 .badge-danger {
     background-color: #f5e6e7;
-    color: #72393f; /* Спокійний винний колір */
+    color: #72393f;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
 }
 
+/* Наші близьнюки-плашки дедлайну та ПДВ */
 .badge-warning, .limit-text-danger {
-    background-color: #d4ddd9; /* Новий ніжно-шавлієвий колір #d4ddd9, а темний Фірмовий сіро-оливковий колір тексту меню справа #a3b1aa */
+    background-color: #a3b1aa; /* Наш колір тексту меню */
     color: #1e2522;
     padding: 4px 12px;
     border-radius: 4px;
@@ -290,25 +340,26 @@ content: #6c757d;;
     display: inline-block;
 }
 
-/* Блок ліміту */
+/* Блок ліміту доходу */
 .limit-item {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
 }
 
 .limit-info {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 0.95rem;
 }
 
-/* Тонкий та вишуканий прогрес-бар */
+/* Витончений повзунок ліміту */
 .progress-container {
     background-color: #e9ecef;
     border-radius: 4px;
     overflow: hidden;
-    height: 12px; /* Робимо смужку витонченою та тонкою */
+    height: 12px;
 }
 
 .progress-bar {
@@ -319,17 +370,14 @@ content: #6c757d;;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #0f5132; /* Наш фірмовий глибокий смарагдовий колір для заповнення ліміту */
-    border-radius: 4px;
+    background-color: #0f5132; /* Наш фірмовий глибокий смарагдовий */
 }
 
-/* Акуратний підвал віджета лімітів */
 .limit-footer {
     display: flex;
     justify-content: space-between;
     font-size: 0.85rem;
-    color: #8a948f;
+    color: #6c757d;
     border-top: 1px solid #f1f3f5;
-    padding-top: 14px;
-    margin-top: 4px;
+    padding-top: 10px;
 }
