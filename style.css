@@ -149,19 +149,21 @@ content: #6c757d;;
     color: #adb5bd;
 }
 
-/* Верхня панель з кнопками */
+/* Верхня шапка сторінки — вирівнюємо елементи та додаємо простір */
 .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 35px; /* Наш ідеальний відступ знизу від H1 до карток */
+    padding-top: 10px; /* Невеликий відступ від самого верху екрана */
 }
 
 .action-buttons {
     display: flex;
     gap: 10px;
-    max-width: 350px; /* Золоте обмеження: не розтягнеться на пів екрана */
-    justify-content: space-between;/* Розсуває назву вліво, а значення вправо */
+    width: 100%;
+    max-width: none;
+    justify-content: end;
 }
 
 /* Стиль для кнопки згортання */
@@ -277,11 +279,12 @@ content: #6c757d;;
     align-items: center;
 }
 
-/* 3. Мінімалістична крапочка в колір загальної теми */
+/* Мінімалістична крапочка в колір загальної теми */
 .dot-icon {
     color: #606c38; /* Оливково-смарагдовий фірмовий колір */
-    margin-right: 10px;
-    font-size: 1.4rem;
+    margin-right: 8px;
+    font-size: 1.3rem;
+    vertical-align: middle; /* Вирівнюємо її строго по центру тексту */
     line-height: 0;
 }
 
@@ -323,21 +326,25 @@ content: #6c757d;;
 .badge-danger {
     background-color: #f5e6e7;
     color: #72393f;
-    padding: 4px 12px;
+    padding: 4px 12px; /* 0 Прибираємо бічні відступи */
     border-radius: 4px;
     font-size: 0.8rem;
     font-weight: 600;
+    /*width: 130px; Задаємо точно таку ж довжину, як і у сусідніх плашок */
+    /*text-align: center; Центруємо текст */
 }
 
 /* Наші близьнюки-плашки дедлайну та ПДВ */
 .badge-warning, .limit-text-danger {
     background-color: #a3b1aa; /* Наш колір тексту меню */
     color: #1e2522;
-    padding: 4px 12px;
+    padding: 4px 12px; /* 0 Прибираємо бічні відступи (залишаємо 0), бо тепер ширину тримає властивість width */
     border-radius: 4px;
     font-size: 0.8rem;
     font-weight: 600;
     display: inline-block;
+    /*width: 130px;  Задаємо фіксовану однакову довжину для плашок */
+    /*text-align: center;  Ідеально центруємо текст всередині плашки */
 }
 
 /* Блок ліміту доходу */
@@ -380,4 +387,232 @@ content: #6c757d;;
     color: #6c757d;
     border-top: 1px solid #f1f3f5;
     padding-top: 10px;
+}
+
+/* ==========================================================================
+   СТИЛЬ СТОРІНОК
+   ========================================================================== */
+
+/*    ЕКРАН ПЕРЕЛІК ФОП: ШЛІФОВАНИЙ ЕЛЕГАНТНИЙ МІНІМАЛІЗМ           */
+
+/* Фіксуємо заголовок і кнопки строго в один горизонтальний рядок */
+#reestr-section .section-header,
+#calendar-section .section-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 30px !important;
+    
+    /* ТОЙ САМИЙ ОЧІКУВАНИЙ ВІДСТУП: відсуваємо картки ФОП вниз на безпечну відстань */
+    margin-bottom: 40px !important; 
+    padding-top: 5px !important;
+    width: 100% !important;
+    max-width: none !important; 
+}
+
+/* Робимо заголовок шляхетним, акуратним та чітким */
+#reestr-section h1, #calendar-section h1 {
+    font-family: system-ui, -apple-system, sans-serif !important; /* Повертаємо класичний надійний шрифт */
+    font-size: 1.85rem !important; /* Акуратний розмір (компактніший, ніж на Дашборді) */
+    font-weight: 600 !important; /* Напівжирний (Semi-bold) — виглядає дуже стильно, не грубо і не блідо */
+    color: #212529 !important; /* Глибокий графітовий колір */
+    margin: 0 !important;
+    letter-spacing: -0.3px !important; /* Легке, ледве помітне преміальне зближення літер */
+    padding-bottom: 28px;
+}
+
+/* Гарантуємо, що дві кнопки стоять поруч на одній лінії */
+#reestr-section .action-buttons {
+    display: flex !important;
+    gap: 12px !important;
+    align-items: center !important;
+    max-width: 350px !important;
+    justify-content: space-between !important;
+}
+
+/* Стандартизуємо вигляд кнопок, щоб вони були акуратними близнюками за висотою */
+#reestr-section .btn-secondary, 
+#reestr-section .btn-add {
+    padding: 10px 22px !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    border-radius: 6px !important; /* Красиві, м'які закруглення */
+    height: 42px !important; /* Чітко фіксуємо однакову висоту для обох кнопок */
+}
+
+/*    ЕКРАН КАЛЕНДАРЯ ДЕДЛАЙНІВ: ПРИГЛУШЕНИЙ ФІНАНСОВИЙ ТРЕКЕР       */
+
+/* СТИЛІЗАЦІЯ ТАБЛИЦІ */
+
+.compliance-table {
+    width: 100%;
+    border-collapse: collapse; /* Зливаємо подвійні рамки в одну тонку лінію */
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+/* Шапка таблиці — глибокий графітовий тон із білим текстом */
+.compliance-table th {
+    background-color: #242926; 
+    color: #a3b1aa; /* Наш колір тексту з лівого меню */
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 16px 20px;
+    text-align: left;
+}
+/* Рядки та клітинки таблиці */
+.compliance-table td {
+    padding: 16px 20px;
+    font-size: 0.95rem;
+    color: #333;
+    border-bottom: 1px solid #f1f3f5; /* Ледве помітна сіра лінія-роздільник рядків */
+    vertical-align: middle;
+}
+
+/* Елегантне підсвічування рядка при наведенні мишкою */
+.compliance-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* СТИЛІЗАЦІЯ ВБУДОВАНОГО КАЛЕНДАРИКА (Input Date) */
+.input-fact-date {
+    font-family: system-ui, sans-serif;
+    font-size: 0.9rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    padding: 6px 10px;
+    color: #334155;
+    background-color: #f8fafc;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+/* Коли клікаємо на календар — рамка стає смарагдовою */
+.input-fact-date:focus {
+    border-color: #0f5132;
+    background-color: #fff;
+}
+
+/* СТІКЕРИ СТАТУСІВ У ТАБЛИЦІ */
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Близнюк нашої плашки: спокійний шавлієво-сірий фон у колір меню */
+.badge-success {
+    background-color: #d4ddd9 !important;
+    color: #1e2522 !important;
+}
+
+/* Небезпека: делікатний винно-матовий тон */
+.badge-danger {
+    background-color: #f5e6e7 !important;
+    color: #72393f !important;
+}
+
+/* КАЛЕНДАР*/
+
+/* КНОПКИ ПЕРЕМИКАННЯ: тримаємо їх разом, робимо компактними та красивими */
+.calendar-toggle-buttons {
+    display: flex;
+    background-color: #e2e8f0; /* Робимо спільну стильну підкладку для кнопок */
+    padding: 4px;
+    border-radius: 8px;
+    gap: 4px; 
+}
+
+/* Налаштування вигляду кнопок всередині цього блоку */
+.calendar-toggle-buttons .btn-secondary {
+    padding: 6px 16px !important;
+    font-size: 0.85rem !important;
+    border-radius: 6px !important;
+    background-color: transparent; /* Робимо прозорими за замовчуванням */
+    color: #475569;
+}
+
+/* Активна кнопка виділяється білим кольором, ніби перемикач на iPhone */
+.calendar-toggle-buttons .btn-secondary.active {
+    background-color: #fff !important;
+    color: #1e2522 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* СТИЛІЗАЦІЯ ТАБЛИЦІ */
+.compliance-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.compliance-table th {
+    background-color: #1e2522; /* Наш рідний глибокий темний графіт */
+    color: #a3b1aa;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 18px 20px;
+    text-align: left;
+}
+
+.compliance-table td {
+    padding: 18px 20px;
+    font-size: 0.95rem;
+    color: #333;
+    border-bottom: 1px solid #f1f3f5;
+    vertical-align: middle; /* Вирівнює всі елементи (навіть інпути) чітко по центру рядка */
+}
+
+/* ВІКОНЕЧКА ДАТ: залізобетонно фіксуємо однакову ширину для обох полів */
+.input-fact-date {
+    font-family: system-ui, sans-serif;
+    font-size: 0.9rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: #334155;
+    background-color: #f8fafc;
+    outline: none;
+    
+    width: 160px; /* ОЦЕЙ РЯДОК зробить їх ідеальними близнюками! */
+}
+
+.input-fact-date:focus {
+    border-color: #0f5132;
+    background-color: #fff;
+}
+
+/* ПЛАШКИ СТАТУСІВ: Задаємо однакову ширину та центруємо текст всередині */
+.status-badge {
+    padding: 6px 0; /* Бічні відступи по нулях, ширину тримає width */
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    
+    width: 100px; /* Залізобетонна однакова довжина плашок */
+    text-align: center; /* Центруємо текст всередині */
+}
+
+/* Наш шавлієвий близнюк */
+.badge-success {
+    background-color: #d4ddd9 !important;
+    color: #1e2522 !important;
+}
+
+/* Наш приглушений винно-бордовий */
+.badge-danger {
+    background-color: #f5e6e7 !important;
+    color: #72393f !important;
 }

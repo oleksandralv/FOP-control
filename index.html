@@ -14,10 +14,10 @@
             <aside class="sidebar">
                 <h2></h2>
                 <ul>
-                    <li><a href="#" class="menu-item active">Головна панель</a></li>
-                    <li><a href="#" class="menu-item">Календар дедлайнів</a></li>
-                    <li><a href="#" class="menu-item">Перелік ФОПів</a></li>
-                    <li><a href="#" class="menu-item">Актуальні ліміти</a></li>
+                    <li><a href="#" class="menu-item active" data-target="dashboard-section">Головна панель</a></li>
+                    <li><a href="#" class="menu-item" data-target="calendar-section">Календар дедлайнів</a></li>
+                    <li><a href="#" class="menu-item" data-target="reestr-section">Перелік ФОПів</a></li>
+                    <li><a href="#" class="menu-item" >Актуальні ліміти</a></li>
                 </ul>
             </aside>
 
@@ -83,12 +83,12 @@
                 <!-- СЕКЦІЯ 2: КАЛЕНДАР ДЕДЛАЙНІВ -->
                 <section id="calendar-section" class="hidden">
                     <div class="section-headder">
-                    <h1>Календар дедлайнів</h1>
-                        <div class="action-buttons">
-                            <!-- Перемикач виглядів сторінки -->
-                            <button class="btn-secondary id-active" id="btn-view-list">Список</button>
-                            <button class="btn-secondary" id="btn-view-grid">Місячна сітка</button>
-                        </div>
+                        <h1>Календар дедлайнів</h1>
+                            <div class="action-buttons">
+                                <!-- Перемикач виглядів сторінки -->
+                                <button class="btn-secondary id-active" id="btn-view-list">Список</button>
+                                <button class="btn-secondary" id="btn-view-grid">Місячна сітка</button>
+                            </div>
                     </div>
 
                     <!-- Таблиця дедлайнів (Вигляд за замовчуванням) -->
@@ -99,8 +99,8 @@
                                     <th>Підприємець</th>
                                     <th>Подія/Податок</th>
                                     <th>Крайній термін (План)</th>
-                                    <tr>Дата виконання (Факт)</tr>
-                                    <tr>Статус</tr>
+                                    <th>Дата виконання (Факт)</th>
+                                    <th>Статус</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -110,7 +110,7 @@
                                     <td>Подання звітності з ПДВ (серпень)</td>
                                     <td>20.10.2026</td>
                                     <td><input type="data" class="input-fact-date" id="fact-date-fop3" name="fact-date-fop3"></td>
-                                    <td><span class="status-badge badge-danger">🔥 Горить</span></td>
+                                    <td><span class="status-badge badge-danger">Горить</span></td>
                                 </tr>
                                 <!-- Тестовий рядок 2: Успішно виконано -->
                                 <tr class="row-success">
@@ -118,7 +118,7 @@
                                     <td>Сплата ЄСВ (III квартал)</td>
                                     <td>19.10.2026</td>
                                     <td><input type="date" class="input-fact-date" id="fact-date-fop1" name="fact-date-fop1" value="2026-10-15"></td>
-                                    <td><span class="status-badge badge-success">🟢 Сплачено</span></td>
+                                    <td><span class="status-badge badge-success">Сплачено</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -131,8 +131,8 @@
                         <h1>Перелік ФОП</h1>
                         <div class="action-buttons">
                             <!-- Наші кнопки керування -->
-                         <button class="btn-add">+ Додати ФОП 🪪</button>
-                         <button class="btn-secondary" id="btn-toggle-all">Розгорнути всіх</button>                         
+                            <button class="btn-add">+ Додати ФОП</button>
+                            <button class="btn-secondary" id="btn-toggle-all">Розгорнути всіх</button>                         
                         </div>
                     </div>
 
